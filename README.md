@@ -52,12 +52,14 @@ When the program is started, all possibilities and functions are shown and run d
 
 ## Authors
 
-* **Marco Kulla** - ** 
-* **Robin Weyand** - **
-* **David Lehr** - **
+* **Marco Kulla**  
+* **Robin Weyand** 
+* **David Lehr** 
+
+The coding was done all together in the group.
 
 ## Acknowledgments
 
-* Thanks to Corona, that gave us the ideo to this project when we sat in the airplane on our way home
+* Thanks to Corona, that gave us the idea to this project when we sat in the airplane on our way home
 
 
