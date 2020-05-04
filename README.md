@@ -6,8 +6,6 @@ With FRS you can build up a database with different aiports and flights and rese
 
 To get started, download the project to your local machine. Extract the .zip archive. The archive includes a Visual Studio project file, which you have to open. If you dont want to open the whole project, you can just open the .exe file to run the program.
 
-### Prerequisites
-
 Before you run the program for the first time, let's have a look on the .txt files. They have the following structure:
 
 airports.txt - includes Names of airports
