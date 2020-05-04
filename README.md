@@ -39,7 +39,11 @@ You can edit these files before starting the program or use the deafult files. I
 
 ### Installing
 
-Debug the project with the run button. The Console should now open and load the data that is saved in in the .txt files. 
+No installations are needed.
+If you use Visual Studio, Debug the project with the run button. 
+If you just want to run the program, open the Flight_Reservation.exe file.
+
+The Console should now open and load the data that is saved in in the .txt files. 
 
 ## Deployment
 
