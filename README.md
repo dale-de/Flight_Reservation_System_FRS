@@ -35,7 +35,7 @@ Flight ID, Row, Column, Surname, Firstname
 ....
 ```
 
-You can edit these files before starting the program or use the deafult files. It is iportant that there are no spaces in the files, otherwise the program can not read the files. When the program is running, the files are overwitten when the user saves all to the file system.
+You can edit these files before starting the program or use the deafult files. It is important that there are no spaces in the files, otherwise the program can not read the files. When the program is running, the files are overwitten when the user saves all to the file system.
 
 ### Installing
 
