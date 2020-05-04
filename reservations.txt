@@ -1,0 +1,18 @@
+12310,1,A,Fox,Peter
+12310,1,C,Stolze,Anne
+12310,5,A,Schulze, Peter
+12310,5,B,Wussoff,Klaus
+12310,5,C,Moenkemueller,Regina
+12310,5,D,Maier,Klaus-Peter
+12310,8,A,Schnell,Michael
+12310,9,B,Hartmann,Lucie
+12310,10,C,Mueller, Michael
+12310,11,A,Reinhart,Reinhard
+12310,19,B,Ketonen,Jouko
+12310,20,C,Fries,Karl
+12320,1,A,Lehr,David
+12320,1,C,Kolka,Franz
+12320,1,E,Kretzer,Matthias
+12320,4,E,Kulla,Maco
+12320,7,C,Weyand,Robin
+12320,20,C,Fischer,Leonie
