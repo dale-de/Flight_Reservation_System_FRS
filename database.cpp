@@ -17,6 +17,12 @@ unsigned int database::addFlightToDataBase(flight* newFlight) {
 	IDs.push_back(newID);
 	return newID;
 }
+unsigned int database::addFlightToDataBase(flight* newFlight, unsigned int ID) {
+	flights.push_back(newFlight);
+	IDs.push_back(ID);
+	nextID = ID;
+	return ID;
+}
 database::~database() {
 	for (unsigned int i = 0; i < flights.size(); i++) {
 		if (flights.at(i) != NULL) {
@@ -111,4 +117,80 @@ void database::printReservations(unsigned int ID) {
 void database::printSeatMap(unsigned int ID) {
 	unsigned int index = getPositionInVectorByID(ID);
 	flights.at(index)->printSeatMap();
+}
+
+void database::saveToFile() {
+	ofstream flightFile, reservationFile;
+	flightFile.open("flights.txt");
+
+	for (int i = 0; i < flights.size(); i++) {
+		flightFile << IDs[i] << ',' << flights[i]->getCols() << ',' << flights[i]->getRows() << "," << flights[i]->sourceID << "," << flights[i]->destID <<"\n";
+		flights[i]->giveReservations(IDs[i], i);
+	}	
+	flightFile.close();
+
+}
+
+void database::clearFlights() {
+	flights.clear();
+	IDs.clear();
+}
+void database :: readFile(airports* Airports) {
+	string line;
+	ifstream flights_file("flights.txt");
+	ifstream reservations_file("reservations.txt");
+
+	try
+	{
+		if (flights_file.is_open()) {
+			while (getline(flights_file, line)) {
+				vector<string> flight_parts;
+				stringstream ss(line);
+				while (ss.good())
+				{
+					string substr;
+					getline(ss, substr, ',');
+					flight_parts.push_back(substr);
+
+				}
+				flight* f = new flight(*Airports, stoi(flight_parts[1]), stoi(flight_parts[2]), stoi(flight_parts[3]), stoi(flight_parts[4]));
+				addFlightToDataBase(f, stoi(flight_parts[0]));
+			}
+			flights_file.close();
+		}
+		else {
+			cout << "Could not read the flights file.";
+			throw 14;
+		}	
+	}
+	catch (exception ex)
+	{
+		throw 14;
+	}
+	try
+	{
+		if (reservations_file.is_open()) {
+			while (getline(reservations_file, line)) {
+				vector<string> reservation_parts;
+				stringstream ss(line);
+				while (ss.good())
+				{
+					string substr;
+					getline(ss, substr, ',');
+					reservation_parts.push_back(substr);
+				}
+				reserveFlight(stoi(reservation_parts[0]), reservation_parts[4], reservation_parts[3], stoi(reservation_parts[1]), reservation_parts[2][0]);
+			}
+			reservations_file.close();
+		}
+		else {
+			cout << "Could not read the reservations file.";
+			throw 15;
+		}
+			
+	}
+	catch (exception ex)
+	{
+		throw 15;
+	}
 }

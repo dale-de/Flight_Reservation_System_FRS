@@ -51,4 +51,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="airports.txt" />
+    <Text Include="flights.txt" />
+    <Text Include="reservations.txt" />
+  </ItemGroup>
 </Project>

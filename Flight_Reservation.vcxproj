@@ -161,6 +161,11 @@
     <ClInclude Include="premium_seat.h" />
     <ClInclude Include="seat.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="airports.txt" />
+    <Text Include="flights.txt" />
+    <Text Include="reservations.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
