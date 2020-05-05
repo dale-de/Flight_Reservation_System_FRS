@@ -2,6 +2,7 @@
 #include <vector>
 #include "flight.h"
 #include <algorithm>
+#include <sstream>
 
 class database final {
 private:
@@ -18,6 +19,7 @@ public:
 	}
 	unsigned int assignID();
 	unsigned int addFlightToDataBase(flight*);
+	unsigned int addFlightToDataBase(flight*, unsigned int ID);
 	~database();
 	void listFlights(airports&);
 	void deleteFlightByID(unsigned int ID);
@@ -28,5 +30,8 @@ public:
 	void releaseSeat(unsigned int ID, unsigned int row, char col);
 	void printReservations(unsigned int ID);
 	void printSeatMap(unsigned int ID);
+	void saveToFile();
+	void clearFlights();
+	void readFile(airports* Airports);
 };
 

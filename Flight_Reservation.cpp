@@ -18,39 +18,23 @@ unsigned int readInput() {
 int main() {
 	airports& Airports = airports::buildAirports();
 	database& Database = database::buildDatabase();
-	// Example Flights
-	flight* newFlight;
-	unsigned int ID;
-	newFlight = new flight(Airports, 4, 20,
-		1, 4);
-	Database.addFlightToDataBase(newFlight);
-	newFlight = new flight(Airports, 7, 20,
-		0, 7);
-	ID = Database.addFlightToDataBase(newFlight);
 	try
 	{
-		Database.reserveFlight(ID, "Maco", "Kulla", 4,
-			'A');
-		Database.reserveFlight(ID, "Robin", "Weyand", 7,
-			'B');
-		Database.reserveFlight(ID, "David", "Lehr", 2,
-			'B');
-		Database.reserveFlight(ID, "Matthias", "Lehr", 1,
-			'A');
-		Database.printSeatMap(ID);
+		cout << "Loading data from files:" << endl;
+		Database.readFile(&Airports);
 	}
 	catch (int e)
 	{
-		cout << e;
+		cout << "Error reading files. Error ID: " << e << endl;
 	}
 	
-
-	cout << "Welcome to flight reservation system FRS." << endl;
-	Airports.printAirports();
+	cout << endl << "------------------------------------------------------------------------------------" << endl;
+	cout << "                Welcome to flight reservation system FRS." << endl;
+	cout << "------------------------------------------------------------------------------------" << endl << endl;
 	bool running = true;
 	do {
 		try {
-			cout << endl << "Please enter what to do:" << endl;
+			cout << endl << "----------------------------- Please enter what to do: -----------------------------" << endl << endl;
 			cout << "A: List all flights registered in system." << endl;
 			cout << "B: Add a new flight." << endl;
 			cout << "C: Change reserverations for flight identified by ID."
@@ -60,7 +44,9 @@ int main() {
 				<< endl;
 			cout << "E: Delete a flight from the system." << endl;
 			cout << "F: List airports." << endl;
-			cout << "G: Quit system." << endl;
+			cout << "G: Save data to file system." << endl;
+			cout << "H: Load data from files. Unsaved data will be overritten." << endl;
+			cout << "I: Quit system." << endl;
 			char selection;
 			unsigned int ID;
 			unsigned int newSource;
@@ -114,7 +100,7 @@ int main() {
 					selection = toupper(selection);
 					switch (selection) {
 					case 'A':
-						cout << "Please enter last name of passenger." << endl;
+						cout << "Please enter first name of passenger." << endl;
 						cin >> newName;
 						cout << "Please enter surname of passenger." << endl;
 						cin >> newSurname;
@@ -139,7 +125,7 @@ int main() {
 				break;
 			case 'D':
 				cout
-					<< "Please enter ID of flight for which to change reservations."
+					<< "Please enter ID of flight for which to show reservations."
 					<< endl;
 				ID = readInput();
 				if (Database.isIDvalid(ID)) {
@@ -169,6 +155,17 @@ int main() {
 				Airports.printAirports();
 				break;
 			case 'G':
+				cout << "Saving all data to file system." << endl;
+				Database.saveToFile();
+				cout << "All saved." << endl;
+				break;
+			case 'H':
+				cout << "Reading all data from files." << endl;
+				Database.clearFlights();
+				Database.readFile(&Airports);
+				cout << "Reading sucessfull." << endl;;
+				break;
+			case 'I':
 				running = false;
 				cout
 					<< "Now leaving the TH AB flight reservation system. Good bye."
@@ -206,6 +203,12 @@ int main() {
 				break;
 			case 13:
 				cerr << "No reservation found for given seat!" << endl;
+				break;
+			case 14:
+				cerr << "Error reading flight File. Recheck file!"<<endl;
+				break;
+			case 15:
+				cerr << "Error reading reservations File. Recheck file!" << endl;
 				break;
 			default:
 				cerr << "Undefined Error." << endl;

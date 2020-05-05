@@ -14,13 +14,11 @@ class flight {
 private:
 	unsigned int seatsPerRow;
 	unsigned int numRows;
-	unsigned int sourceID;
-	unsigned int destID;
 	vector<seat*> seats;
-	string* name;
-	string* surname;
 	void remapSeat(unsigned int seatIndex, unsigned int* row, char* col);
 public:
+	unsigned int sourceID;
+	unsigned int destID;
 	flight(airports& Airports, unsigned int seatsPerRow, unsigned int numRows, unsigned int sourceID, unsigned int destID);
 	~flight();
 	void printFlightInfo(airports&);
@@ -36,5 +34,6 @@ public:
 	void releaseSeat(unsigned int row, char column);
 	void printReservations();
 	void printSeatMap();
+	void giveReservations(unsigned int ID, int i);
 };
 

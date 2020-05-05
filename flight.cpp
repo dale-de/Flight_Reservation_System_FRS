@@ -115,9 +115,17 @@ void flight::reserveSeat(string name, string surname, unsigned int row,
 	char column) {
 	try {
 		int seatIndex = this->mapSeat(row, column);
-		if (seatIndex < (numRows / 5 * seatsPerRow) && (seatIndex - (row * seatsPerRow)) % 2 == 0) {
+		int not_valid=0;
+		if (seatIndex < (numRows / 5 * seatsPerRow)) {
+			char tmpChar = toupper(column);
+			unsigned int colNr = tmpChar - 65;
+			if (seatsPerRow % 2 == 0  && colNr %2 !=0) {
+					not_valid = 1;
+			}
+		}
+		if (not_valid == 1) {
 			cout << "Seat (" << row << ", " << column
-				<< ") is not avaiable it is just for overbooked flights! Searching for alternative!"
+				<<"index" << seatIndex << ") is not avaiable it is just for overbooked flights! Searching for alternative!"
 				<< std::endl;
 			goto next;
 		}
@@ -191,7 +199,7 @@ void flight::printReservations() {
 	unsigned int row;
 	char seat;
 	for (unsigned int i = 0; i < getSize(); i++) {
-		if (this->isSeatReserved(i)) {
+		if ((this->isSeatReserved(i) && this->seats[i]->type_bool() != true) || (this->isSeatReserved(i) && this->seats[i]->type_bool() == true && seats[i]->name != "")) {
 			remapSeat(i, &row, &seat);
 			cout << "(" << row << ", " << seat << ") reserved for "
 				<< seats[i]->surname << " " << seats[i]->name << endl;
@@ -203,6 +211,25 @@ void flight::printReservations() {
 		<< " are reserved and " << getNrOfFreeSeats() << " are free. Load: "
 		<< getNrOfReservedSeats() / getSize() << "%." << endl << endl
 		<< endl;
+}
+
+void flight::giveReservations(unsigned int ID, int i) {
+	ofstream reservationFile;
+	if (i == 0) {
+		reservationFile.open("reservations.txt");
+	}
+	else
+		reservationFile.open("reservations.txt", std::ios_base::app);
+	unsigned int row;
+	char seat;
+	for (unsigned int i = 0; i < getSize(); i++) {
+		if ((this->isSeatReserved(i) && this->seats[i]->type_bool() != true) || (this->isSeatReserved(i) && this->seats[i]->type_bool() == true && seats[i]->name != "")) {
+			remapSeat(i, &row, &seat);
+			reservationFile << 
+			ID <<',' << row << ',' << seat << "," << seats[i]->surname << "," << seats[i]->name << '\n'; //',' + row + ',' + seat + 
+		}
+	}
+	reservationFile.close();
 }
 
 
