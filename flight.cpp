@@ -162,8 +162,8 @@ void flight::releaseSeat(unsigned int row, char column) {
 		}
 		unsigned int seatIndex = mapSeat(row, column);
 		cout << "Seat (" << row << ", " << column
-			<< ") (originally reserved for " << this->surname[seatIndex]
-			<< " " << this->name[seatIndex] << ") released!" << std::endl;
+			<< ") (originally reserved for " << this->seats[seatIndex]->surname
+			<< " " << this->seats[seatIndex]->name << ") released!" << std::endl;
 		seats[seatIndex]->reserved = false;
 		seats[seatIndex]->name = "";
 		seats[seatIndex]->surname = "";
