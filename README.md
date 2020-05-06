@@ -18,9 +18,9 @@ Name of the City
 
 flights.txt - includes all flights in the system
 ```
-Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationaiport
-Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationaiport
-Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationaiport
+Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationairport
+Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationairport
+Flight ID, Number of Columns, Number of Rows, Index of Souceairport, Index of Destinationairport
 ....
 ```
 
@@ -33,7 +33,7 @@ Flight ID, Row, Column, Surname, Firstname
 ....
 ```
 
-You can edit these files before starting the program or use the default files. It is important that there are no spaces in the files, otherwise the program can not read the files. When the program is running, the files are overwritten when the user saves all to the file system.
+You can edit these files before starting the program or use the default files. It is important that there are no spaces in the files, otherwise the program can not read the files properly. When the program is running, the files are overwritten when the user saves all to the file system.
 
 ### Installing
 
