@@ -45,7 +45,7 @@ The Console should now open and load the data that is saved in the .txt files.
 
 ## Deployment
 
-When the program is started, all possibilities and functions are shown and run depending on the user#s input to the command line.
+When the program is started, all possibilities and functions are shown and run depending on the user's input to the command line.
 
 ## Built With
 
