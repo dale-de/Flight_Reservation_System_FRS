@@ -43,8 +43,6 @@ flight::flight(airports& Airports, unsigned int seatsPerRow,
 
 flight::~flight() {
 	seats.clear();
-	delete[] name;
-	delete[] surname;
 }
 
 void flight::printFlightInfo(airports& Airports) {
